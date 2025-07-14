@@ -6,11 +6,9 @@ import torch
 
 app = FastAPI(title="Korean Llama Instruct API")
 
-# Retrieve your Hugging Face token from environment variable
 HF_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 
 def get_generator():
-    # Load model and tokenizer only once
     model_name = "torchtorchkimtorch/Llama-3.2-Korean-GGACHI-1B-Instruct-v1"
     tokenizer = AutoTokenizer.from_pretrained(model_name, token=HF_TOKEN)
     model = AutoModelForCausalLM.from_pretrained(
@@ -21,7 +19,6 @@ def get_generator():
     )
     return pipeline("text-generation", model=model, tokenizer=tokenizer)
 
-# Instantiate the generator at startup
 generator = get_generator()
 
 class GenerateRequest(BaseModel):
