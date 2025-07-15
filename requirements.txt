@@ -2,4 +2,4 @@ fastapi
 uvicorn[standard]
 transformers
 torch
-pydantic
+sentencepiece
