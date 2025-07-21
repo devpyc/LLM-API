@@ -22,11 +22,11 @@ hf_pipeline = pipeline(
 llm = HuggingFacePipeline(pipeline=hf_pipeline)
 
 @app.get("/g")
-async def generate_response(prompt: str = Query(..., description="생성할 프롬프트 입력")):
+async def generate_response(prompt: str = Query(...)):
     result = llm(prompt)
     return {"answer": result}
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
